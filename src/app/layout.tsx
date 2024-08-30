@@ -1,10 +1,3 @@
-// roboto字体相关样式引用
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-// 代码高亮样式引用
-import '~/highlight.js/styles/github.css'
 // 全局自定义样式引用
 import './global.css'
 

@@ -1,12 +1,9 @@
 import path from 'path'
-import remarkGfm from 'remark-gfm'
 import bundleAnalyzerPlugin from '@next/bundle-analyzer'
 import {fileURLToPath} from 'url'
-import rehypeHighlight from 'rehype-highlight'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 
 /** @type {import('next').NextConfig} */
 let nextConfig = {
@@ -31,14 +28,6 @@ let nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'localhost'
-            },
-            {
-                protocol: 'https',
-                hostname: 'static.calieo.dev'
-            },
-            {
-                protocol: 'https',
-                hostname: 'static.calieo.xyz'
             }
         ]
     },
