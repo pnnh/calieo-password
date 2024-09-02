@@ -1,11 +1,1 @@
-## 如何构建
-
-```shell 
-npm run build
-```
-
-## 构建docker镜像
-
-```bash
-deno run --allow-all build.mjs
-```
+一个随机密码生成工具，可以生成包含大小写字符和数字的密码，可以指定密码长度和生成密码的数量。
