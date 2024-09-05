@@ -106,6 +106,7 @@ export default function RandomPasswordPage() {
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
+        font-size: 0.9rem;
     `
     return <div>
         <div className={styleRandomPassword}>
@@ -116,6 +117,14 @@ export default function RandomPasswordPage() {
                           onClick={() => setLang('en')}>English</span>
                     <span style={{color: lang === 'zh' ? '#1976d2' : '#5c5c5c'}}
                           onClick={() => setLang('zh')}>中文</span>
+                    <span style={{color: lang === 'ru' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('ru')}>Русский</span>
+                    <span style={{color: lang === 'fr' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('fr')}>Français</span>
+                    <span style={{color: lang === 'ar' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('ar')}>العربية</span>
+                    <span style={{color: lang === 'es' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('es')}>Español</span>
                 </div>
                 <p className={classToolDesc}>{t('ToolDesc')}</p>
             </div>

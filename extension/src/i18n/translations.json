@@ -26,5 +26,61 @@
       "GeneratorResult": "生成的密码",
       "GenerateHistory": "生成历史"
     }
+  },
+  "ar": {
+    "translation": {
+      "ProductTitle": "مولد كلمة المرور العشوائية",
+      "ToolDesc": "لن يتم حفظ كلمة المرور المولدة على هذه الصفحة وستختفي بعد تحديث الصفحة أو إغلاقها",
+      "UppercaseLetter": "حرف كبير",
+      "LowercaseLetter": "حرف صغير",
+      "Number": "رقم",
+      "SpecialCharacter": "حرف خاص",
+      "PasswordLength": "طول كلمة المرور",
+      "GeneratePassword": "إنشاء كلمة مرور",
+      "GeneratorResult": "كلمة المرور المولدة",
+      "GenerateHistory": "تاريخ الإنشاء"
+    }
+  },
+  "fr": {
+    "translation": {
+      "ProductTitle": "Générateur de mots de passe aléatoires",
+      "ToolDesc": "Le mot de passe généré sur cette page ne sera pas enregistré et disparaîtra après le rafraîchissement ou la fermeture de la page",
+      "UppercaseLetter": "Lettre majuscule",
+      "LowercaseLetter": "Lettre minuscule",
+      "Number": "Nombre",
+      "SpecialCharacter": "Caractère spécial",
+      "PasswordLength": "Longueur du mot de passe",
+      "GeneratePassword": "Générer un mot de passe",
+      "GeneratorResult": "Mot de passe généré",
+      "GenerateHistory": "Historique de génération"
+    }
+  },
+  "es": {
+    "translation": {
+      "ProductTitle": "Generador de contraseñas aleatorias",
+      "ToolDesc": "La contraseña generada en esta página no se guardará y desaparecerá después de actualizar o cerrar la página",
+      "UppercaseLetter": "Letra mayúscula",
+      "LowercaseLetter": "Letra minúscula",
+      "Number": "Número",
+      "SpecialCharacter": "Carácter especial",
+      "PasswordLength": "Longitud de la contraseña",
+      "GeneratePassword": "Generar contraseña",
+      "GeneratorResult": "Contraseña generada",
+      "GenerateHistory": "Historial de generación"
+    }
+  },
+  "ru": {
+    "translation": {
+      "ProductTitle": "Генератор случайных паролей",
+      "ToolDesc": "Сгенерированный пароль на этой странице не будет сохранен и исчезнет после обновления или закрытия страницы",
+      "UppercaseLetter": "Прописная буква",
+      "LowercaseLetter": "Строчная буква",
+      "Number": "Число",
+      "SpecialCharacter": "Специальный символ",
+      "PasswordLength": "Длина пароля",
+      "GeneratePassword": "Сгенерировать пароль",
+      "GeneratorResult": "Сгенерированный пароль",
+      "GenerateHistory": "История генерации"
+    }
   }
 }
