@@ -1,43 +1,64 @@
-import {randomPassword} from '@/utils/rand'
 import {useState} from 'react'
+import {randomPassword} from '@/utils/rand'
 import {passwordStrength} from '@cmss/check-password-strength'
 import {copyToClipboard} from "@/utils/clipboard";
-import {IconButton, Tooltip} from "@mui/material";
+import {Button, IconButton, Tooltip} from "@mui/material";
 import {ContentCopy} from "@mui/icons-material";
 import {css} from "@emotion/css";
+import ReportOffIcon from '@mui/icons-material/ReportOff';
+import WarningIcon from '@mui/icons-material/Warning';
+import InfoIcon from '@mui/icons-material/Info';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {useTranslation} from '@/i18n/i18n';
+
+const styleToolTitle = css`
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+`
+
+const styleParagraphTitle = css`
+    font-size: 1.2rem;
+`
 
 const styleRandomPassword = css`
     background: #FFFFFF;
-    padding: 16px;
+    padding: 8px;
     border-radius: 4px;
-    width: 960px;
     margin: 0 auto;
 `
 
 const styleSymbolRow = css`
     margin-bottom: 8px;
 `
-const styleToolTitle = css`
-    margin-top: 0`
 
 const classToolDesc = css`
     font-size: 13px;
-    color: #5c5c5c;`
+    color: #5c5c5c;
+`
+
 const classGenPassword = css`
-    font-size: 20px;
+    font-size: 1.2rem;
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
 `
 const classPasswordItem = css`
-
     color: #000;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
+    justify-content: space-between;
+`
+const stylePwdLength = css`
+    width: 2rem;
+`
+const classPwdText = css`
+    flex-grow: 1;
+    word-break: break-all;
 `
 
 export default function RandomPasswordPage() {
@@ -48,15 +69,20 @@ export default function RandomPasswordPage() {
     const [allowUppercaseLetter, setAllowUppercaseLetter] = useState<boolean>(true)
     const [allowSymbol, setAllowSymbol] = useState<boolean>(true)
     const [allowNumber, setAllowNumber] = useState<boolean>(true)
+    const [lang, setLang] = useState<string>('en')
+    const {i18n} = useTranslation(lang);
+    const t = i18n.getFixedT(lang)
 
     const renderPassword = () => {
         if (password.length < 1) {
             return <span></span>
         }
         return <>
-            <h2>生成的密码</h2>
-            <div className={classGenPassword} title={'长度' + String(password.length)}>
-                <CopyIcon password={password}/> {password} <PasswordStrength password={password}/>
+            <h2 className={styleParagraphTitle}>{t('GeneratorResult')}</h2>
+            <div className={classGenPassword}>
+                <CopyIcon password={password}/>
+                <div className={classPwdText}>{password}</div>
+                <PasswordStrength password={password}/>
             </div>
         </>
     }
@@ -65,20 +91,33 @@ export default function RandomPasswordPage() {
             return <span></span>
         }
         const historyList = passwordHistory.map(pwd => {
-            return <div key={pwd} title={'长度' + String(pwd.length)} className={classPasswordItem}>
-                <CopyIcon password={pwd}/> {pwd} <PasswordStrength password={pwd}/>
+            return <div key={pwd} className={classPasswordItem}>
+                <CopyIcon password={pwd}/>
+                <span className={classPwdText}>{pwd}</span>
+                <PasswordStrength password={pwd}/>
             </div>
         })
         return <>
-            <h2>历史密码</h2>
+            <h2 className={styleParagraphTitle}>{t('GeneratorHistory')}</h2>
             {historyList}
         </>
     }
+    const styleLangContainer = css`
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    `
     return <div>
         <div className={styleRandomPassword}>
             <div>
-                <h2 className={styleToolTitle}>随机密码生成器</h2>
-                <p className={classToolDesc}>本页生成的密码不会保持，刷新或关闭页面后消失</p>
+                <h2 className={styleToolTitle}>{t('ProductTitle')}</h2>
+                <div className={styleLangContainer}>
+                    <span style={{color: lang === 'en' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('en')}>English</span>
+                    <span style={{color: lang === 'zh' ? '#1976d2' : '#5c5c5c'}}
+                          onClick={() => setLang('zh')}>中文</span>
+                </div>
+                <p className={classToolDesc}>{t('ToolDesc')}</p>
             </div>
             <div className={styleSymbolRow}>
                 <label>
@@ -86,35 +125,35 @@ export default function RandomPasswordPage() {
                         console.debug('radio', event.target.checked)
                         setAllowLetter(event.target.checked)
                     }}/>
-                    小写字母
+                    {t('LowercaseLetter')}
                 </label>
                 <label>
                     <input type={'checkbox'} title={'A-Z'} checked={allowUppercaseLetter} onChange={(event) => {
                         setAllowUppercaseLetter(event.target.checked)
                     }}/>
-                    大写字母
+                    {t('UppercaseLetter')}
                 </label>
                 <label>
                     <input type={'checkbox'} title={'0-9'} checked={allowNumber} onChange={(event) => {
                         setAllowNumber(event.target.checked)
                     }}/>
-                    数字
+                    {t('Number')}
                 </label>
                 <label>
                     <input type={'checkbox'} title={'@#$...'} checked={allowSymbol} onChange={(event) => {
                         setAllowSymbol(event.target.checked)
                     }}/>
-                    特殊字符
+                    {t('SpecialCharacter')}
                 </label>
             </div>
             <div className={styleSymbolRow}>
-                <input value={length} className={'fx-input'}
+                <input value={length} className={stylePwdLength}
                        onChange={(event) => {
                            setLength(Number(event.target.value))
-                       }} title={'密码长度'} type={'number'} min={4} max={64}/>
+                       }} title={t('PasswordLength')} type={'number'} min={4} max={48}/>
             </div>
             <div className={'calc-row'}>
-                <button className={'btn btn-sm mb-2'} onClick={() => {
+                <Button variant={'contained'} size={'small'} className={'btn btn-sm mb-2'} onClick={() => {
                     const options = {
                         number: allowNumber,
                         letter: allowLetter,
@@ -128,8 +167,8 @@ export default function RandomPasswordPage() {
                     const history = passwordHistory.slice(0, 15)
                     history.splice(0, 0, password)
                     setPasswordHistory(history)
-                }}>点击生成
-                </button>
+                }}>{t('GeneratePassword')}
+                </Button>
             </div>
             <div>
                 {renderPassword()}
@@ -149,7 +188,7 @@ function CopyIcon({password}: { password: string }) {
         <IconButton aria-label="copy" size="small"
                     onClick={() => {
                         copyToClipboard(password).then(() => {
-                            setMessage('success')
+                            setMessage('copied')
                         }).catch(() => {
                             setMessage('failed')
                         })
@@ -167,24 +206,15 @@ function PasswordStrength({password}: { password: string }) {
     const strength = passwordStrength(password).value.toLowerCase()
 
     if (strength === 'strong') {
-        return <div className="badge badge-sm badge-success text-white text-xs">
-            {strength}
-        </div>
+        return <CheckCircleIcon fontSize={'small'} color={'success'} titleAccess={strength}/>
     }
     if (strength === 'medium') {
-        return <div
-            className="badge badge-sm badge-info text-white text-xs">
-            {strength}
-        </div>
+        return <InfoIcon fontSize={'small'} color={'info'} titleAccess={strength}/>
     }
     if (strength === 'weak') {
-        return <div className="badge badge-sm badge-warning text-white text-xs">
-            {strength}
-        </div>
+        return <WarningIcon fontSize={'small'} color={'warning'} titleAccess={strength}/>
     }
 
-    return <div className="badge badge-sm badge-error text-white text-xs">
-        {strength}
-    </div>
+    return <ReportOffIcon fontSize={'small'} color={'error'} titleAccess={strength}/>
 
 }

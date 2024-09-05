@@ -1,18 +1,17 @@
 import theme from './theme';
 import {ThemeProvider} from "@mui/material";
+import './i18n/i18n';
 
 import RandomPasswordPage from "@/tools/password/random-password.tsx";
 import {css} from "@emotion/css";
 
 const styleFullPage = css`
-    height: 100vh;
     background-color: #f3f3f3;
 `
 
 const styleMainContainer = css`
-    width: 100vw;
-    height: 100vh;
-    overflow-y: auto;
+    width: 100%;
+    height: 100%;
     background-color: #ffffff;
 `
 
