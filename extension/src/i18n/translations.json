@@ -10,7 +10,7 @@
       "PasswordLength": "Password Length",
       "GeneratePassword": "Generate Password",
       "GeneratorResult": "Generated Password",
-      "GeneratorHistory": "Generator History"
+      "GenerateHistory": "Generate History"
     }
   },
   "zh": {
@@ -24,7 +24,7 @@
       "PasswordLength": "密码长度",
       "GeneratePassword": "生成密码",
       "GeneratorResult": "生成的密码",
-      "GeneratorHistory": "生成历史"
+      "GenerateHistory": "生成历史"
     }
   }
 }

@@ -98,7 +98,7 @@ export default function RandomPasswordPage() {
             </div>
         })
         return <>
-            <h2 className={styleParagraphTitle}>{t('GeneratorHistory')}</h2>
+            <h2 className={styleParagraphTitle}>{t('GenerateHistory')}</h2>
             {historyList}
         </>
     }
