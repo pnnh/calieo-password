@@ -9,7 +9,7 @@ import ReportOffIcon from '@mui/icons-material/ReportOff';
 import WarningIcon from '@mui/icons-material/Warning';
 import InfoIcon from '@mui/icons-material/Info';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import {useTranslation} from '@/i18n/i18n';
+import {getAppLang, useTranslation} from '@/i18n/i18n';
 
 const styleToolTitle = css`
     font-size: 1.3rem;
@@ -69,7 +69,7 @@ export default function RandomPasswordPage() {
     const [allowUppercaseLetter, setAllowUppercaseLetter] = useState<boolean>(true)
     const [allowSymbol, setAllowSymbol] = useState<boolean>(true)
     const [allowNumber, setAllowNumber] = useState<boolean>(true)
-    const [lang, setLang] = useState<string>('en')
+    const [lang, setLang] = useState<string>(getAppLang())
     const {i18n} = useTranslation(lang);
     const t = i18n.getFixedT(lang)
 

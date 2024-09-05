@@ -6,6 +6,20 @@ import {
 } from "react-i18next";
 import resources from './translations.json' with {type: "json"}
 import {useEffect, useState} from "react";
+import acceptLanguage from 'accept-language'
+import {getNavigatorLang} from "@/utils/lang.ts";
+
+export const fallbackLng = 'en'
+export const languages = [fallbackLng, 'zh']
+
+acceptLanguage.languages(languages)
+
+
+export function getAppLang() {
+    const navLang = getNavigatorLang()
+    return acceptLanguage.get(navLang) || fallbackLng
+}
+
 
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
