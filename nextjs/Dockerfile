@@ -1,9 +1,7 @@
 FROM node:21
 
-EXPOSE 8000
-
-ENV NODE_ENV production
-ENV PORT 8000
+ENV NODE_ENV=production
+ENV PORT=8000
 
 WORKDIR /data
 
