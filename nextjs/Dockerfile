@@ -1,7 +1,7 @@
 FROM node:21
 
 ENV NODE_ENV=production
-ENV PORT=8000
+ENV PORT=8003
 
 WORKDIR /data
 
